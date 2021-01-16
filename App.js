@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeRouter, Route } from 'react-router-native';
+
+// Import Components
+import NavigationBar from './_includes/navigation_bar';
+
+// Import Screens
+import DashboardScreen from './_screens/dashboard_screen';
+import DocumentScreen from './_screens/document_screen';
+import ProfileScreen from './_screens/profile_screen';
+import Settings from './_screens/settings_screen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello world fron Barlos and Noureddine!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeRouter>
+      <Route exact path={`/`} component={DashboardScreen} />
+      <Route exact path={`/document`} component={DocumentScreen} />
+      <Route exact path={`/profile`} component={ProfileScreen} />
+      <Route exact path={`/settings`} component={Settings} />
+
+      <NavigationBar />
+    </NativeRouter>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
